@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  my-app:
+    container_name: my-app
+    image: node:12
+    working_dir: /usr/src/frontend
+    restart: always
+    command: bash -c "npm install @vue/cli@3.7.0 -g && npm install && npm run serve"
+    volumes:
+      - ./src/:/usr/src/frontend/src/
+      - ./package.json:/usr/src/frontend/package.json
+      - ./.eslintrc.js:/usr/src/frontend/.eslintrc.js
+    ports:
+      - '8080:8080'

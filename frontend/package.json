@@ -5,6 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "up": "npm run build && docker-compose up -d",
+    "down": "docker-compose down",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
