@@ -9,6 +9,29 @@ services:
     volumes:
       - ./dist/:/usr/src/backend/dist/
       - ./package.json:/usr/src/backend/package.json
+      - ./.env:/usr/src/backend/.env
+      - ./ormconfig.js:/usr/src/backend/ormconfig.js
+      - ./ormconfig.json:/usr/src/backend/ormconfig.json
     ports:
       - "5050:5050"
       - "9222:9222"
+    networks:
+      - app-connect
+
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "postgres"
+    volumes:
+      - ./data/:/usr/src/backend/data/
+    networks:
+      - app-connect
+
+networks:
+  app-connect:
+      driver: bridge
