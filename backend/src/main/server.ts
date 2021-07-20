@@ -1,4 +1,9 @@
 import 'module-alias/register'
-import app from './config/app'
+import { createConnections } from 'typeorm'
 
-app.listen(5050, () => console.log('Server running at 5050'))
+createConnections()
+  .then(async () => {
+    const app = (await import('./config/app')).default
+    app.listen(5050, () => console.log('Server running at 5050'))
+  })
+  .catch(console.error)

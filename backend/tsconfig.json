@@ -14,6 +14,8 @@
     "baseUrl": "src",
 		"resolveJsonModule": true,
     "removeComments": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "paths": {
       "@/tests/*": ["../tests/*"],
       "@/*": ["*"]
